@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <import resource="database.xml"></import>
+
+    <bean id="jdbc" class="org.springframework.jdbc.core.JdbcTemplate">
+        <constructor-arg ref="dataSource"></constructor-arg>
+    </bean>
+
+    <bean id="userRowMapper" class="mapper.UserRowMapper" />
+
+    <bean id="contentRowMapper" class="mapper.ContentRowMapper" />
+
+    <bean id="userDao" class="dao.UserDao"/>
+
+    <bean id="contentDao" class="dao.ContentDao"/>
+
+    <bean id="userService" class="service.UserService" />
+
+
+</beans>
