@@ -7,8 +7,6 @@ import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.mock.web.MockHttpServletRequest;
-import org.springframework.mock.web.MockHttpSession;
 
 import java.sql.Timestamp;
 
@@ -26,10 +24,6 @@ public class UserServiceTest {
 
     @Mock
     private UserDao userDao;
-    @Mock
-    MockHttpServletRequest request;
-    @Mock
-    MockHttpSession session;
 
     @InjectMocks
     private UserService userService;
@@ -45,10 +39,6 @@ public class UserServiceTest {
             new User(1,"root","202cb962ac59075b964b07152d234b70",new Timestamp(0)));
         when(userDao.getByUserName("root")).thenReturn(
             new User(1,"root","202cb962ac59075b964b07152d234b70",new Timestamp(0)));
-        when(request.getSession()).thenReturn(
-            session);
-        when(session.getAttribute("userId")).thenReturn(
-            new Integer(1));
     }
 
 
@@ -65,10 +55,5 @@ public class UserServiceTest {
         assertThat(userId,is(0));
     }
 
-    @Test
-    public void login_user_name_right() throws Exception {
-        User loginUser = userService.loginUserInfo();
-        assertThat(loginUser.getUserName(),is("root"));
-    }
 
 }

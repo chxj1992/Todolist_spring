@@ -9,9 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import service.UserService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -26,15 +25,17 @@ public class IndexController {
     @Autowired
     private ContentDao contentDao;
     @Autowired
-    private UserService userService;
+    private UserDao userDao;
 
-	@RequestMapping(value="/",method = RequestMethod.GET)
-	public String homePage(ModelMap model) {
-        User user = userService.loginUserInfo();
+	@RequestMapping(value="/", method = RequestMethod.GET)
+	public String homePage(ModelMap model, HttpServletRequest request) {
+
+        Integer userId = (Integer) request.getSession().getAttribute("userId");
+        User user = userDao.getByUserId(userId);
         List<Content> contents = contentDao.getListByUserId(user.getUserId());
 
-        model.addAttribute("user",user);
-        model.addAttribute("contents",contents);
+        model.addAttribute("user", user);
+        model.addAttribute("contents", contents);
         return "index";
 	}
 

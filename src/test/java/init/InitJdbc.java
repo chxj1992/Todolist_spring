@@ -28,7 +28,7 @@ public class InitJdbc {
 
     public static void initMockData() {
 
-        ClassPathResource resource = new ClassPathResource("MockData.txt",InitJdbc.class);
+        ClassPathResource resource = new ClassPathResource("MockData.txt", InitJdbc.class);
 
         String sql = "";
         try {

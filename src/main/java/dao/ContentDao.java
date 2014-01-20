@@ -28,7 +28,7 @@ public class ContentDao {
 
     public Boolean addContent(String context) {
         Integer userId = (Integer) request.getSession().getAttribute("userId");
-        Integer ret = jdbc.update("INSERT INTO content (user_id,context) VALUES (?,?)",userId,context);
+        Integer ret = jdbc.update("INSERT INTO content (user_id, context) VALUES (?, ?)", userId, context);
         if ( ret == 0 )
             return false;
         else
@@ -36,7 +36,7 @@ public class ContentDao {
     }
 
     public Boolean removeContent(Integer content_id) {
-        Integer ret = jdbc.update("DELETE FROM content WHERE content_id = ?",content_id);
+        Integer ret = jdbc.update("DELETE FROM content WHERE content_id = ?", content_id);
         if ( ret == 0 )
             return false;
         else
@@ -44,7 +44,7 @@ public class ContentDao {
     }
 
     public Boolean updateContent(Integer content_id, String context) {
-        Integer ret =  jdbc.update("UPDATE content set context = ? WHERE content_id = ?",context,content_id);
+        Integer ret =  jdbc.update("UPDATE content set context = ? WHERE content_id = ?", context, content_id);
         if ( ret == 0 )
             return false;
         else

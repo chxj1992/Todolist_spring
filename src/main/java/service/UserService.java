@@ -17,9 +17,6 @@ public class UserService {
     @Autowired
     private UserDao userDao;
 
-    @Autowired
-    private HttpServletRequest request;
-
 
     public Integer checkPassword (String username, String password) {
 
@@ -34,9 +31,5 @@ public class UserService {
         return user.getUserId();
     }
 
-    public User loginUserInfo() {
-        Integer userId = (Integer) request.getSession().getAttribute("userId");
-        return userDao.getByUserId(userId);
-    }
 
 }

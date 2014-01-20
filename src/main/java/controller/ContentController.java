@@ -7,9 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import tool.Json;
+import tool.AjaxReturn;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 
 
@@ -25,41 +24,38 @@ public class ContentController {
     @Autowired
     private ContentDao contentDao;
 
-    @Autowired
-    HttpServletRequest request;
 
-    @RequestMapping(value="add",method = RequestMethod.POST)
+    @RequestMapping(value="add", method = RequestMethod.POST)
     @ResponseBody
-    public Object addContent() throws UnsupportedEncodingException {
+    public Object addContent(@RequestParam("content") String context) throws UnsupportedEncodingException {
 
-        String context = request.getParameter("context");
         Boolean ret = contentDao.addContent(context);
 
-        if( !ret )  return Json.fail("添加失败");
+        if( !ret )  return AjaxReturn.fail("添加失败");
 
-        return Json.success("添加成功");
+        return AjaxReturn.success("添加成功");
     }
 
-    @RequestMapping(value="remove",method = RequestMethod.POST)
+    @RequestMapping(value="remove", method = RequestMethod.POST)
     @ResponseBody
     public Object removeContent(@RequestParam("content_id") Integer content_id) {
 
         Boolean ret = contentDao.removeContent(content_id);
 
-        if( !ret )  return Json.fail("删除失败");
+        if( !ret )  return AjaxReturn.fail("删除失败");
 
-        return Json.success("删除成功");
+        return AjaxReturn.success("删除成功");
     }
 
-    @RequestMapping(value="update",method = RequestMethod.POST)
+    @RequestMapping(value="update", method = RequestMethod.POST)
     @ResponseBody
-    public Object updateContent(@RequestParam("content_id") Integer content_id,@RequestParam() String context) {
+    public Object updateContent(@RequestParam("contentId") Integer contentId, @RequestParam("context") String context) {
 
-        Boolean ret = contentDao.updateContent(content_id, context);
+        Boolean ret = contentDao.updateContent(contentId, context);
 
-        if( !ret )  return Json.fail("更新失败");
+        if( !ret )  return AjaxReturn.fail("更新失败");
 
-        return Json.success("更新成功");
+        return AjaxReturn.success("更新成功");
     }
 
 }

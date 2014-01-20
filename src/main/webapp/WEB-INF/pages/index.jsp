@@ -17,7 +17,7 @@
 <c:forEach var="content" items="${contents}">
     <form action="/content/remove" method="post">
         ${content.context} : ${content.updateTime}
-        <input name="content_id" type="hidden" value=${content.contentId} />
+        <input name="contentId" type="hidden" value=${content.contentId} />
         <input type="submit" value="remove" />
         <br />
     </form>

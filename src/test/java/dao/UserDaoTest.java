@@ -20,7 +20,7 @@ import static org.junit.Assert.assertThat;
  * Author: chen
  * DateTime: 1/9/14 11:20 PM
  */
-//@ContextConfiguration(locations = {"classpath:ioc-mock.xml"})
+//@ContextConfiguration(locations = {"classpath:beans-mock.xml"})
 public class UserDaoTest {
 
     //@Spy

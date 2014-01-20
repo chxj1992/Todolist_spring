@@ -53,41 +53,39 @@ public class ContentControllerTest {
                 new Boolean(true));
         when(contentDao.updateContent(eq(100), anyString())).thenReturn(
                 new Boolean(false));
-        when(request.getParameter("context")).thenReturn(
-                new String("a context"));
     }
 
 
     @Test
     public void test_add_content_success() throws Exception {
-        Map json = (Map) contentController.addContent();
-        assertThat((String) json.get("status"),is("1"));
+        Map json = (Map) contentController.addContent("a context");
+        assertThat((String) json.get("status"), is("1"));
     }
 
 
     @Test
     public void test_remove_content_success() throws Exception {
         Map json = (Map) contentController.removeContent(1);
-        assertThat((String) json.get("status"),is("1"));
+        assertThat((String) json.get("status"), is("1"));
     }
 
 
     @Test
     public void test_update_content_success() throws Exception {
         Map json = (Map) contentController.updateContent(1, "new content");
-        assertThat((String) json.get("status"),is("1"));
+        assertThat((String) json.get("status"), is("1"));
     }
 
     @Test
     public void test_remove_not_exist_content_fail() throws Exception {
         Map json = (Map) contentController.removeContent(100);
-        assertThat((String) json.get("status"),is("0"));
+        assertThat((String) json.get("status"), is("0"));
     }
 
     @Test
     public void test_update_not_exist_content_fail() throws Exception {
-        Map json = (Map) contentController.updateContent(100,"new content");
-        assertThat((String) json.get("status"),is("0"));
+        Map json = (Map) contentController.updateContent(100, "new content");
+        assertThat((String) json.get("status"), is("0"));
     }
 
 }
