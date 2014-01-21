@@ -7,9 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import tool.AjaxReturn;
+import utils.AjaxReturn;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Map;
 
 
 /**
@@ -27,22 +28,22 @@ public class ContentController {
 
     @RequestMapping(value="add", method = RequestMethod.POST)
     @ResponseBody
-    public Object addContent(@RequestParam("content") String context) throws UnsupportedEncodingException {
+    public Map addContent(@RequestParam("content") String context) throws UnsupportedEncodingException {
 
-        Boolean ret = contentDao.addContent(context);
+        Boolean result = contentDao.addContent(context);
 
-        if( !ret )  return AjaxReturn.fail("添加失败");
+        if( !result )  return AjaxReturn.fail("添加失败");
 
         return AjaxReturn.success("添加成功");
     }
 
     @RequestMapping(value="remove", method = RequestMethod.POST)
     @ResponseBody
-    public Object removeContent(@RequestParam("content_id") Integer content_id) {
+    public Map removeContent(@RequestParam("content_id") Integer content_id) {
 
-        Boolean ret = contentDao.removeContent(content_id);
+        Boolean result = contentDao.removeContent(content_id);
 
-        if( !ret )  return AjaxReturn.fail("删除失败");
+        if( !result )  return AjaxReturn.fail("删除失败");
 
         return AjaxReturn.success("删除成功");
     }
@@ -51,9 +52,9 @@ public class ContentController {
     @ResponseBody
     public Object updateContent(@RequestParam("contentId") Integer contentId, @RequestParam("context") String context) {
 
-        Boolean ret = contentDao.updateContent(contentId, context);
+        Boolean result = contentDao.updateContent(contentId, context);
 
-        if( !ret )  return AjaxReturn.fail("更新失败");
+        if( !result )  return AjaxReturn.fail("更新失败");
 
         return AjaxReturn.success("更新成功");
     }

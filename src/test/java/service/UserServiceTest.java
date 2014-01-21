@@ -44,14 +44,14 @@ public class UserServiceTest {
 
     @Test
     public void check_password_right() throws Exception {
-        Integer userId = userService.checkPassword("root","123");
+        Integer userId = userService.isValidUser("root", "123");
         assertThat(userId,is(1));
     }
 
     @Test
     public void check_password_wrong() throws Exception {
 
-        Integer userId = userService.checkPassword("root","1234");
+        Integer userId = userService.isValidUser("root", "1234");
         assertThat(userId,is(0));
     }
 

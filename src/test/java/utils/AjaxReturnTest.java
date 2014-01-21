@@ -1,4 +1,4 @@
-package tool;
+package utils;
 
 import org.junit.Test;
 
@@ -6,7 +6,6 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 /**
- * add_your_description_here
  * Author: chen
  * DateTime: 1/9/14 11:05 PM
  */

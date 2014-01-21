@@ -1,4 +1,4 @@
-package tool;
+package utils;
 
 import com.google.common.collect.ImmutableMap;
 

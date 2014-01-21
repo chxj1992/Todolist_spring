@@ -48,11 +48,11 @@ public class UserControllerTest {
         MockitoAnnotations.initMocks(this);
 
        //given
-        when(userService.checkPassword("root", "123")).thenReturn(
+        when(userService.isValidUser("root", "123")).thenReturn(
                 new Integer(1));
-        when(userService.checkPassword(not(eq("root")), anyString())).thenReturn(
+        when(userService.isValidUser(not(eq("root")), anyString())).thenReturn(
                 new Integer(0));
-        when(userService.checkPassword(anyString(), not(eq("123")))).thenReturn(
+        when(userService.isValidUser(anyString(), not(eq("123")))).thenReturn(
                 new Integer(0));
         when(request.getSession()).thenReturn(
                 session);

@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * add_your_description_here
  * Author: chen
  * DateTime: 1/7/14 2:42 PM
  */

@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * add_your_description_here
  * Author: chen
  * DateTime: 1/8/14 10:11 AM
  */
