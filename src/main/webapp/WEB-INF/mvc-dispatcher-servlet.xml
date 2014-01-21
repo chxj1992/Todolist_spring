@@ -32,6 +32,7 @@
             </list>
         </property>
     </bean>
+
     <bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
         <property name="supportedMediaTypes">
             <list>
@@ -39,7 +40,6 @@
             </list>
         </property>
     </bean>
-
 
     <bean id="utf8Charset" class="java.nio.charset.Charset"
           factory-method="forName">
@@ -53,5 +53,6 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
+    <mvc:resources mapping="/js/**" location="/assets/js/bower_components/" />
 
 </beans>

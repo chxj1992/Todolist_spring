@@ -1,14 +1,7 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>TodoList</title>
-</head>
-<body>
+<%@include file="public/header.jsp" %>
 
 <strong> 用户名: </strong> ${user.userName}
 <hr/>
-
 <form action="/content/add" method="post">
     <input name="context" type="text" placeholder="write new context here" />
     <input type="submit" value="submit" />
@@ -25,4 +18,12 @@
 
 
 </body>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        alert("test js");
+    });
+</script>
+
 </html>

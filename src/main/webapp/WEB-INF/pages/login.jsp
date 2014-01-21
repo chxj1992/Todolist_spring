@@ -1,7 +1,8 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title></title>
+    <title>TodoList</title>
+    <link rel="stylesheet" href="<c:url value="/js/bootstrap/dist/css/bootstrap.min.css" />"/>
 </head>
 <body>
 
@@ -10,7 +11,7 @@
 <form action="/user/doLogin" method="post">
     <strong>Username:</strong><input name="userName" type="text" value="root" /> <br/>
     <strong>Password:</strong><input name="password" type="text" value="123" /> <br/>
-    <input type="submit" value="login" />
+    <input class="btn btn-primary" type="submit" value="login" />
 </form>
 
 </body>
