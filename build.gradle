@@ -1,6 +1,7 @@
 apply plugin: 'idea'
 apply plugin: 'war'
 apply plugin: 'jetty'
+apply from: 'http://www.tellurianring.com/projects/gradle-plugins/gradle-templates/apply.groovy'
 
 repositories {
     mavenLocal()
