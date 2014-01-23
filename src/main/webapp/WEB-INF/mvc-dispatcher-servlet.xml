@@ -53,6 +53,7 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
-    <mvc:resources mapping="/js/**" location="/assets/js/bower_components/" />
+    <mvc:resources mapping="/js/**" location="/assets/js/" />
+    <mvc:resources mapping="/bower/**" location="/assets/js/bower_components/" />
 
 </beans>

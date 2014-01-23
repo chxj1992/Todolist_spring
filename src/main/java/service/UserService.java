@@ -19,13 +19,15 @@ public class UserService {
 
     public Integer isValidUser(String username, String password) throws UserInvalidException {
 
+        if ( username == "" || password == "" )
+            throw(new UserInvalidException("Empty String is Invalid"));
+
         User user = userDao.getByUserName(username);
-
-        if ( user == null  )  throw(new UserInvalidException("Invalid User"));
-
+        if ( user == null )
+            throw(new UserInvalidException(" Invalid User"));
         String md5Password = DigestUtils.md5DigestAsHex(password.getBytes());
-
-        if ( !user.getPassword().equals(md5Password) ) throw(new UserInvalidException("Wrong Password"));
+        if ( !user.getPassword().equals(md5Password) )
+            throw(new UserInvalidException("Wrong Password"));
 
         return user.getUserId();
     }

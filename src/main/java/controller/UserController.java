@@ -54,6 +54,13 @@ public class UserController {
         return AjaxReturn.success("登录成功");
     }
 
+    @RequestMapping(value="noLogin", method = RequestMethod.POST)
+    @ResponseBody
+    public Map noLogin(HttpServletRequest request) {
+        request.getSession().setAttribute("userId", 0 );
+        return AjaxReturn.success("登录成功");
+    }
+
     @RequestMapping(value="logout", method = RequestMethod.GET)
     @ResponseBody
     public void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {

@@ -16,7 +16,9 @@ public class LoginInterceptor implements HandlerInterceptor {
 
     ImmutableSet<String> interceptUri = ImmutableSet.of(
         "/user/login",
-        "/user/doLogin"
+        "/user/doLogin",
+        "/js/.*",
+        "/bower/.*"
     );
 
     @Override
@@ -25,8 +27,10 @@ public class LoginInterceptor implements HandlerInterceptor {
         if ( request.getSession().getAttribute("userId") != null )
             return true;
 
-        if ( interceptUri.contains(request.getRequestURI()) )
-            return true;
+        for ( String uri : interceptUri ) {
+            if ( request.getRequestURI().matches(uri) )
+                return true;
+        }
 
         response.sendRedirect("/user/login");
         return false;
