@@ -1,6 +1,7 @@
 package service;
 
 import dao.UserDao;
+import exception.UserInvalidException;
 import model.User;
 import org.junit.Before;
 import org.junit.Test;
@@ -49,11 +50,47 @@ public class UserServiceTest {
     }
 
     @Test
-    public void check_password_wrong() throws Exception {
-
-        Integer userId = userService.isValidUser("root", "1234");
-        assertThat(userId,is(0));
+    public void check_empty_password() throws Exception {
+        String errorInfo = "";
+        try {
+            userService.isValidUser("root", "");
+        } catch ( UserInvalidException e ) {
+            errorInfo = e.getMessage();
+        }
+        assertThat(errorInfo, is("Empty String is Invalid"));
     }
 
 
+    @Test
+    public void check_empty_username() throws Exception {
+        String errorInfo = "";
+        try {
+            userService.isValidUser("", "123");
+        } catch ( UserInvalidException e ) {
+            errorInfo = e.getMessage();
+        }
+        assertThat(errorInfo, is("Empty String is Invalid"));
+    }
+
+    @Test
+    public void check_invalid_username() throws Exception {
+        String errorInfo = "";
+        try {
+            userService.isValidUser("abc", "123");
+        } catch ( UserInvalidException e ) {
+            errorInfo = e.getMessage();
+        }
+        assertThat(errorInfo, is("Invalid User"));
+    }
+
+    @Test
+    public void check_wrong_password() throws Exception {
+        String errorInfo = "";
+        try {
+            userService.isValidUser("root", "12345");
+        } catch ( UserInvalidException e ) {
+            errorInfo = e.getMessage();
+        }
+        assertThat(errorInfo, is("Wrong Password"));
+    }
 }

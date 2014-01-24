@@ -22,7 +22,7 @@ public class ContentDao {
     private HttpServletRequest request;
 
     public List<Content> getListByUserId(Integer userId) {
-        return jdbc.query("SELECT * FROM content WHERE user_id = ?", contentRowMapper, userId);
+        return jdbc.query("SELECT * FROM content WHERE user_id = ? ORDER BY update_time DESC", contentRowMapper, userId);
     }
 
     public Boolean addContent(String context) {

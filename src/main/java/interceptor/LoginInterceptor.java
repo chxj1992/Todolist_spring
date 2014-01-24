@@ -1,6 +1,5 @@
 package interceptor;
 
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,10 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginInterceptor implements HandlerInterceptor {
 
     ImmutableSet<String> interceptUri = ImmutableSet.of(
-        "/user/login",
-        "/user/doLogin",
+        "/user/.*",
         "/js/.*",
-        "/bower/.*"
+        "/bower/.*",
+        "/css/.*",
+        "/img/.*"
     );
 
     @Override

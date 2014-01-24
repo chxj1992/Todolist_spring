@@ -61,12 +61,11 @@ public class UserController {
         return AjaxReturn.success("登录成功");
     }
 
-    @RequestMapping(value="logout", method = RequestMethod.GET)
+    @RequestMapping(value="logout", method = RequestMethod.POST)
     @ResponseBody
-    public void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
+    public Map logout(HttpServletRequest request) {
         request.getSession().setAttribute("userId", null );
-        response.sendRedirect("/");
+        return AjaxReturn.success("登出成功");
     }
 
 

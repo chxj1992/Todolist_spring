@@ -23,8 +23,9 @@ public class UserService {
             throw(new UserInvalidException("Empty String is Invalid"));
 
         User user = userDao.getByUserName(username);
-        if ( user == null )
-            throw(new UserInvalidException(" Invalid User"));
+        if ( user == null || user.getUserId() == null )
+            throw(new UserInvalidException("Invalid User"));
+
         String md5Password = DigestUtils.md5DigestAsHex(password.getBytes());
         if ( !user.getPassword().equals(md5Password) )
             throw(new UserInvalidException("Wrong Password"));
