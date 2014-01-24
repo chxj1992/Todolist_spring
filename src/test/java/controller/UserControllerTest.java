@@ -1,5 +1,6 @@
 package controller;
 
+import exception.UserInvalidException;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -37,7 +38,6 @@ public class UserControllerTest {
     @Mock
     private HttpSession session;
 
-
     @InjectMocks
     private UserController userController;
 
@@ -50,10 +50,10 @@ public class UserControllerTest {
        //given
         when(userService.isValidUser("root", "123")).thenReturn(
                 new Integer(1));
-        when(userService.isValidUser(not(eq("root")), anyString())).thenReturn(
-                new Integer(0));
-        when(userService.isValidUser(anyString(), not(eq("123")))).thenReturn(
-                new Integer(0));
+        when(userService.isValidUser(not(eq("root")), eq("123"))).thenThrow(
+                new UserInvalidException("Invalid User"));
+        when(userService.isValidUser(anyString(), not(eq("123")))).thenThrow(
+                new UserInvalidException("Wrong Password"));
         when(request.getSession()).thenReturn(
                 session);
     }
@@ -78,19 +78,19 @@ public class UserControllerTest {
 
     @Test
     public void login_success() throws Exception {
-        Map json = (Map) userController.doLogin("root", "123", request);
+        Map json = userController.doLogin("root", "123", request);
         assertThat((String) json.get("status"), is("1"));
     }
 
     @Test
     public void login_fail_with_wrong_username() throws Exception {
-        Map json = (Map) userController.doLogin("admin", "123", request);
+        Map json = userController.doLogin("admin", "123", request);
         assertThat((String) json.get("status"), is("0"));
     }
 
     @Test
     public void login_fail_with_wrong_password() throws Exception {
-        Map json = (Map) userController.doLogin("root", "1234", request);
+        Map json =  userController.doLogin("root", "1234", request);
         assertThat((String) json.get("status"), is("0"));
     }
 

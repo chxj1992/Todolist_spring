@@ -26,7 +26,7 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <div id="content-input">
-                    <input id="new-content" style="font-size:20px;" class="form-control" type="text" placeholder=" Write new context here ..." />
+                    <input id="new-content" style="font-size:20px;" class="form-control" type="text" placeholder=" What needs to be done?" />
                 </div>
                 <div id="content-alert" style="display: none;margin-top:10px;">
                     <div class="alert alert-danger col-md-10">
