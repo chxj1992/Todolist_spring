@@ -39,9 +39,9 @@ public class ContentController {
 
     @RequestMapping(value="remove", method = RequestMethod.POST)
     @ResponseBody
-    public Map removeContent(@RequestParam("content_id") Integer content_id) {
+    public Map removeContent(@RequestParam("contentId") Integer contentId) {
 
-        Boolean result = contentDao.removeContent(content_id);
+        Boolean result = contentDao.removeContent(contentId);
 
         if( !result )  return AjaxReturn.fail("删除失败");
 
@@ -50,9 +50,9 @@ public class ContentController {
 
     @RequestMapping(value="update", method = RequestMethod.POST)
     @ResponseBody
-    public Object updateContent(@RequestParam("contentId") Integer contentId, @RequestParam("context") String context) {
+    public Object updateContent(@RequestParam("contentId") Integer contentId, @RequestParam("content") String content) {
 
-        Boolean result = contentDao.updateContent(contentId, context);
+        Boolean result = contentDao.updateContent(contentId, content);
 
         if( !result )  return AjaxReturn.fail("更新失败");
 

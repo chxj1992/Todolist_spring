@@ -45,8 +45,11 @@ define('user',['jquery','bootstrap'],function(require, exports, module) {
                 if (data.status == 1){
                     window.location.reload();
                 } else {
-                    $("#login-alert").removeClass();
+                    $("#login-alert").fadeIn();
                     $("#login-error-info").text(data.info);
+                    setTimeout(function(){
+                        $("#login-alert").fadeOut();
+                    },3000);
                 }
             }
         });

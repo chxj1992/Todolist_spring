@@ -16,10 +16,16 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="panel panel-info">
                     <div class="panel-heading">
+                        <strong>
+                            Welcome
+                            <span class="glyphicon glyphicon-log-in"></span>
+                        </strong>
+                        <!--
                         <strong> Login Or </strong> &nbsp;
                         <button id="noLogin" class="btn btn-warning">
                             Not <span class="glyphicon glyphicon-log-in"></span>
                         </button>
+                        -->
                     </div>
                     <div class="panel-body">
                         <div class="form-horizontal">
@@ -38,8 +44,8 @@
                             <div class="form-group">
                                 <button id="doLogin" class="btn btn-primary col-md-offset-8">Login</button>
                             </div>
-                            <div id="login-alert" class="hide">
-                                <div class="alert alert-danger col-md-10">
+                            <div id="login-alert" style="display: none;">
+                                <div class="alert alert-danger col-md-10 col-md-offset-1">
                                     <strong>登陆失败:</strong> <span id="login-error-info"></span>
                                 </div>
                             </div>

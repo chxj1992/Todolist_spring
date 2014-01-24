@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 /**
  * 内容数据模型
@@ -49,8 +50,9 @@ public class Content {
         return context;
     }
 
-    public Timestamp getUpdateTime() {
-        return updateTime;
+    public String getUpdateTime() {
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return df.format(updateTime);
     }
 
 
