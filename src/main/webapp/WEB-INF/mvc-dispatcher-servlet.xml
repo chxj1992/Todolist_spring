@@ -57,4 +57,5 @@
     <mvc:resources mapping="/bower/**" location="/assets/js/bower_components/" />
     <mvc:resources mapping="/css/**" location="/assets/css/" />
     <mvc:resources mapping="/img/**" location="/assets/image/" />
+    <mvc:resources mapping="/favicon.ico" location="/favicon.ico" />
 </beans>
