@@ -3,7 +3,6 @@ package init;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import sun.tools.jar.resources.jar;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -28,7 +27,7 @@ public class InitJdbc {
 
     public static void initMockData() {
 
-        ClassPathResource resource = new ClassPathResource("MockData.txt", InitJdbc.class);
+        ClassPathResource resource = new ClassPathResource("/MockData.sql");
 
         String sql = "";
         try {

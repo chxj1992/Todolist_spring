@@ -1,3 +1,4 @@
+apply plugin: 'jetty'
 apply plugin: 'idea'
 apply plugin: 'war'
 apply plugin: 'jetty'
