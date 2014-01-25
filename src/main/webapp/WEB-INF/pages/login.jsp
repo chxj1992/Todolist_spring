@@ -1,4 +1,3 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@include file="public/header.jsp" %>
 
 </head>
@@ -44,7 +43,7 @@
                             <div class="form-group">
                                 <button id="doLogin" class="btn btn-primary col-md-offset-8">Login</button>
                             </div>
-                            <div id="login-alert" style="display: none;">
+                            <div id="login-alert">
                                 <div class="alert alert-danger col-md-10 col-md-offset-1">
                                     <strong>登陆失败:</strong> <span id="login-error-info"></span>
                                 </div>
@@ -59,7 +58,7 @@
     </div>
 
     <script>
-        seajs.use(['jquery','<c:url value="/js/user" />']);
+        seajs.use(['jquery','/js/user']);
     </script>
 
 <%@include file="public/footer.jsp" %>
